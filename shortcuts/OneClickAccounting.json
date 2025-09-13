@@ -1,0 +1,56 @@
+{
+  "name": "One-Click Accounting",
+  "description": "Record expenses quickly with AI categorization",
+  "version": "1.0",
+  "shortcut_url": "",
+  "actions": [
+    {
+      "type": "ask_for_input",
+      "prompt": "What did you spend money on?",
+      "input_type": "text",
+      "variable_name": "expense_description"
+    },
+    {
+      "type": "ask_for_input", 
+      "prompt": "How much did it cost?",
+      "input_type": "number",
+      "variable_name": "expense_amount"
+    },
+    {
+      "type": "get_current_location",
+      "variable_name": "current_location"
+    },
+    {
+      "type": "choose_from_menu",
+      "prompt": "Payment method?",
+      "options": ["Cash", "Credit Card", "Debit Card", "Digital Wallet", "Other"],
+      "variable_name": "payment_method"
+    },
+    {
+      "type": "text_action",
+      "text": "{\"amount\": \"[expense_amount]\", \"description\": \"[expense_description]\", \"location\": \"[current_location]\", \"payment_method\": \"[payment_method]\"}",
+      "variable_name": "json_data"
+    },
+    {
+      "type": "get_contents_of_url",
+      "method": "POST",
+      "url": "[YOUR_APPS_SCRIPT_WEB_APP_URL]",
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "body": "json_data",
+      "variable_name": "api_response"
+    },
+    {
+      "type": "show_notification",
+      "title": "Expense Recorded",
+      "body": "Successfully logged expense of $[expense_amount]"
+    }
+  ],
+  "setup_instructions": [
+    "1. Replace [YOUR_APPS_SCRIPT_WEB_APP_URL] with your deployed Google Apps Script web app URL",
+    "2. Test the shortcut with a sample expense",
+    "3. Add the shortcut to your iOS home screen for quick access",
+    "4. Optionally add voice trigger: 'Hey Siri, log expense'"
+  ]
+}

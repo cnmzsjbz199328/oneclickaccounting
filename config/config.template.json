@@ -1,0 +1,36 @@
+{
+  "_comment": "Configuration Template - Copy this file to config.json and fill in your actual values",
+  "google_apps_script": {
+    "spreadsheet_id": "YOUR_GOOGLE_SHEETS_ID_HERE",
+    "web_app_url": "YOUR_DEPLOYED_APPS_SCRIPT_URL_HERE",
+    "sheet_name": "Expenses"
+  },
+  "ai_api": {
+    "provider": "openai",
+    "api_key": "YOUR_AI_API_KEY_HERE",
+    "api_url": "https://api.openai.com/v1/chat/completions",
+    "model": "gpt-3.5-turbo",
+    "backup_categorization": true
+  },
+  "expense_categories": [
+    "Food & Dining",
+    "Transportation", 
+    "Shopping",
+    "Entertainment",
+    "Bills & Utilities",
+    "Healthcare",
+    "Travel", 
+    "Education",
+    "Other"
+  ],
+  "currency": {
+    "symbol": "$",
+    "code": "USD",
+    "format": "en-US"
+  },
+  "shortcuts": {
+    "voice_trigger": "log expense",
+    "notification_enabled": true,
+    "location_required": false
+  }
+}
